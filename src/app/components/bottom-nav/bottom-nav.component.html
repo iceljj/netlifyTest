@@ -1,0 +1,13 @@
+<!-- bottom-nav.component.html -->
+<nav class="bottom-nav-container">
+  <div class="nav-item" *ngFor="let item of navItems; let i = index">
+    <div class="nav-button"
+         [class.active]="isActive(item.path)"
+         (click)="navigate(item.path, i)">
+      <div class="icon-container">
+        <span class="material-icons">{{ item.icon }}</span>
+      </div>
+      <span class="label">{{ item.label }}</span>
+    </div>
+  </div>
+</nav>
