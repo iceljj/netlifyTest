@@ -1,0 +1,197 @@
+/* 全局样式 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+  color: white;
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-container {
+  max-width: 800px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  color: #4fc3f7;
+}
+
+.instructions {
+  background: rgba(25, 118, 210, 0.2);
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 25px;
+  text-align: left;
+  border-left: 4px solid #4fc3f7;
+
+  p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+}
+
+.camera-container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto 25px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+  aspect-ratio: 4/3;
+}
+
+.video-feed {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1); /* 镜像翻转 */
+  display: block;
+  background: #000;
+}
+
+.drawing-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.control-btn {
+  padding: 12px 15px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.camera-btn {
+  background: linear-gradient(135deg, #2196F3, #21CBF3);
+
+  &.active {
+    background: linear-gradient(135deg, #f44336, #ff9800);
+  }
+}
+
+.draw-btn {
+  background: linear-gradient(135deg, #4CAF50, #8BC34A);
+
+  &.active {
+    background: linear-gradient(135deg, #FFC107, #FF9800);
+  }
+}
+
+.eraser-btn {
+  background: linear-gradient(135deg, #FF9800, #FF5722);
+
+  &.active {
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+  }
+}
+
+.clear-btn {
+  background: linear-gradient(135deg, #9C27B0, #673AB7);
+}
+
+.status {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.status-item {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.1rem;
+
+  span:first-child {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #90CAF9;
+  }
+
+  span:last-child {
+    font-weight: 700;
+    padding: 5px 15px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.3);
+
+    &.active {
+      background: rgba(76, 175, 80, 0.3);
+      color: #69F0AE;
+    }
+  }
+}
+
+.footer-note {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #90CAF9;
+  opacity: 0.8;
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+  .app-container {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .controls {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .status {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+}

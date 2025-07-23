@@ -1,0 +1,62 @@
+<div class="app-container">
+  <h1>{{title}}</h1>
+
+  <div class="instructions">
+    <p>用手指在空中作画！将食指放在摄像头前开始绘图。</p>
+    <p>✋ <strong>提示：</strong>握拳可以暂时停止绘图</p>
+  </div>
+
+  <div class="camera-container">
+    <video #video class="video-feed" autoplay playsinline></video>
+    <canvas #canvas class="drawing-canvas" width="640" height="480"></canvas>
+  </div>
+
+  <div class="controls">
+    <button
+      (click)="isCameraActive ? stopCamera() : startCamera()"
+      [class.active]="isCameraActive"
+      class="control-btn camera-btn"
+    >
+      {{isCameraActive ? '停止摄像头' : '启动摄像头'}}
+    </button>
+
+    <button
+      (click)="toggleDrawing()"
+      [class.active]="isDrawing"
+      class="control-btn draw-btn"
+    >
+      {{isDrawing ? '停止绘图' : '开始绘图'}}
+    </button>
+
+    <button
+      (click)="toggleEraser()"
+      [class.active]="isErasing"
+      class="control-btn eraser-btn"
+    >
+      {{isErasing ? '关闭橡皮擦' : '开启橡皮擦'}}
+    </button>
+
+    <button (click)="clearCanvas()" class="control-btn clear-btn">
+      清除画布
+    </button>
+  </div>
+
+  <div class="status">
+    <div class="status-item">
+      <span>摄像头: </span>
+      <span [class.active]="isCameraActive">{{isCameraActive ? '开启' : '关闭'}}</span>
+    </div>
+    <div class="status-item">
+      <span>绘图模式: </span>
+      <span [class.active]="isDrawing">{{isDrawing ? '激活' : '关闭'}}</span>
+    </div>
+    <div class="status-item">
+      <span>橡皮擦: </span>
+      <span [class.active]="isErasing">{{isErasing ? '开启' : '关闭'}}</span>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    <p>使用MediaPipe和Angular构建的手部追踪绘图应用</p>
+  </div>
+</div>

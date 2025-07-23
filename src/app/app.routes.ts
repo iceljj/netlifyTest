@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router';
 
 export const routes: Routes = [
   {
@@ -13,5 +13,9 @@ export const routes: Routes = [
     path: 'mine',
     loadComponent: () => import('./components/mine/mine.component').then(m => m.MineComponent)
   },
-  { path: '', redirectTo: 'gallery', pathMatch: 'full' }
+  {
+    path: 'screen',
+    loadComponent: () => import('./components/screen-handwriting/screen-handwriting.component').then(m => m.ScreenHandwritingComponent)
+  },
+  {path: '', redirectTo: 'screen', pathMatch: 'full'}
 ];
